@@ -49,14 +49,14 @@ class GameplayActivity(myappkit.Activity):
         self.addItem(grid)
 
     def save(self):
-        if not Path('C:\\Users\\cvemo\\PycharmProjects\\Snake AI\\data\\G' + str(self.items[self._1st_snake].ai.generation)).is_dir():
-            create_folder('C:\\Users\\cvemo\\PycharmProjects\\Snake AI\\data\\G' + str(self.items[self._1st_snake].ai.generation))
+        if not Path('data\\G' + str(self.items[self._1st_snake].ai.generation)).is_dir():
+            create_folder('data\\G' + str(self.items[self._1st_snake].ai.generation))
 
         for i in range(self.n_parents):
-            path = 'C:\\Users\\cvemo\\PycharmProjects\\Snake AI\\data\\G' + str(self.parents[i].generation) + '\\' + str(i) + '.pt'
+            path = 'data\\G' + str(self.parents[i].generation) + '\\' + str(i) + '.pt'
             self.parents[i].save_model(path)
 
-        path = 'C:\\Users\\cvemo\\PycharmProjects\\Snake AI\\data\\G' + str(self.items[self._1st_snake].ai.generation) + '\\details.txt'
+        path = 'data\\G' + str(self.items[self._1st_snake].ai.generation) + '\\details.txt'
         with open(path, 'w') as details:
             lines = [
                 str(AI.GAModel.generation) + '\n',
@@ -75,14 +75,14 @@ class GameplayActivity(myappkit.Activity):
             
         ####
         
-        if not Path('C:\\Users\\cvemo\\PycharmProjects\\Snake AI\\load'):
-            create_folder('C:\\Users\\cvemo\\PycharmProjects\\Snake AI\\load')
+        if not Path('load'):
+            create_folder('load')
 
         for i in range(self.n_parents):
-            path = 'C:\\Users\\cvemo\\PycharmProjects\\Snake AI\\load\\' + str(i) + '.pt'
+            path = 'load\\' + str(i) + '.pt'
             self.parents[i].save_model(path)
 
-        path = 'C:\\Users\\cvemo\\PycharmProjects\\Snake AI\\load\\details.txt'
+        path = 'load\\details.txt'
         with open(path, 'w') as details:
             lines = [
                 str(AI.GAModel.generation) + '\n',
@@ -100,7 +100,7 @@ class GameplayActivity(myappkit.Activity):
             details.writelines(lines)
 
     def load_model(self):
-        with open('C:\\Users\\cvemo\\PycharmProjects\\Snake AI\\load\\details.txt', 'r') as details_file:
+        with open('load\\details.txt', 'r') as details_file:
             AI.GAModel.generation = eval(details_file.readline().strip())
             self.time_spent_training = eval(details_file.readline().strip())
             self.n_parents = eval(details_file.readline().strip())
@@ -122,7 +122,7 @@ class GameplayActivity(myappkit.Activity):
         snake.setGrid(self.grid)
         if self.model_loaded:
             p_index = np.random.choice([i for i in range(self.n_parents)], p=self.probabilities)
-            path = 'C:\\Users\\cvemo\\PycharmProjects\\Snake AI\\load\\' + str(p_index) + '.pt'
+            path = 'load\\' + str(p_index) + '.pt'
             snake.ai.load_model(path)
         self.addItem(snake)
 
