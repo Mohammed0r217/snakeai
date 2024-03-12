@@ -22,7 +22,7 @@ python main.py
 
 ## How It Works
 
-The neural network guides the snake's movements. It takes in 14 inputs: 12 for nearby blocks (0=empty, 0.5=snake body, 1=wall) and 2 for the food's relative position (-1=left/up, 1=right/down, 0=same level). The output is the probability of the snake moving in each of the four directions.
+The neural network guides the snake's movements. It takes in 14 inputs: 12 for nearby blocks (0=empty, 0.5=snake body, 1=wall) and 2 for the food's relative position (-1=left/up, 1=right/down, 0=same level). The output is the probability of the snake moving in each of the four directions. The game starts with a population of 500 snakes, each with its own neural network. At the end of each generation, the 10 best-performing snakes are selected via a fitness function and are used to reproduce the next generation.
 
 ## License
 
