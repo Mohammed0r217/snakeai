@@ -1,6 +1,6 @@
 # Snake AI
 
-A snake game that is controlled by a neural network and trained by a genetic algorithm.
+A snake game that is controlled by a neural network and trained using a genetic algorithm.
 
 ## Technologies Used
 
@@ -15,7 +15,7 @@ A snake game that is controlled by a neural network and trained by a genetic alg
 ```bash
 pip install pygame pytorch
 ```
-3. Run the main file to start the game:
+3. Navigate to the repository's directory and run the main file to start the game:
 ```bash
 python main.py
 ```
